@@ -3,6 +3,7 @@ import { QueueService } from './queue.service';
 import { LeadModule } from '../lead/lead.module';
 import { ConfigModule } from '@nestjs/config';
 import { RedisModule } from '../redis/redis.module';
+import { QueueController } from './queue.controller';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { RedisModule } from '../redis/redis.module';
     LeadModule,
     RedisModule,
   ],
+  controllers: [QueueController],
   providers: [QueueService],
   exports: [QueueService],
 })
