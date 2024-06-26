@@ -69,6 +69,17 @@ export class QueueService {
     return queue.map((item) => JSON.parse(item));
   }
 
+  async requeueLeadsWithNullSalesmanId() {
+    const leads = await this.leadService.findLeadsWithNullSalesmanId();
+    const redis = this.redisService.getClient();
+
+    for (const lead of leads) {
+      await redis.lpush('updateSalesmanQueue', JSON.stringify(lead));
+    }
+
+    await this.processUpdateSalesmanQueue();
+  }
+
   async getUpdateSalesmanQueue(): Promise<
     { id: number; name: string; email: string; salesmanId: number | null }[]
   > {

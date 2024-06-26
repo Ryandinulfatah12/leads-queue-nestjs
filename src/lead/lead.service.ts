@@ -44,4 +44,11 @@ export class LeadService {
       .lrange('leadQueue', 0, -1);
     return queue.map((item) => JSON.parse(item));
   }
+  async findLeadsWithNullSalesmanId() {
+    return this.prisma.lead.findMany({
+      where: {
+        salesmanId: null,
+      },
+    });
+  }
 }

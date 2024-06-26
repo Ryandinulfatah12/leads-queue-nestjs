@@ -3,6 +3,7 @@ import { LeadModule } from './lead/lead.module';
 import { PrismaModule } from '../prisma/prisma.module';
 import { QueueModule } from './queue/queue.module';
 import { ConfigModule } from '@nestjs/config';
+import { SchedulerModule } from './scheduler/scheduler.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ConfigModule } from '@nestjs/config';
     LeadModule,
     PrismaModule,
     QueueModule,
+    SchedulerModule,
   ],
 })
 export class AppModule {}
