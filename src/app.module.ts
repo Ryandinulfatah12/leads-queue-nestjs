@@ -8,9 +8,6 @@ import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
     LeadModule,
     PrismaModule,
     QueueModule,
@@ -18,4 +15,4 @@ import { CommonModule } from './common/common.module';
     CommonModule,
   ],
 })
-export class AppModule {}
+export class AppModule { }
